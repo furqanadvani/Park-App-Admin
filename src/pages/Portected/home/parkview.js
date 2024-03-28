@@ -2,7 +2,7 @@ import React from 'react';
 import {  useNavigate, useParams } from 'react-router-dom';
 // import data from '../data.json';
 // import './details.css'
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { IoLocationSharp } from "react-icons/io5";
 import { useSelector } from 'react-redux';
 import { selectAllparkhResult } from '../../../features/allParkSlice';
@@ -29,11 +29,35 @@ function ParkView() {
 
  
   const handleBooking = () => navigate(`/bookingform/${cardId}`);
-
+  const startTime = park?.parktiming?.starttime;
+  const formattedTime = startTime ? startTime.slice(11, 16) : ''; // Extracting time part (hh:mm)
+  console.log(formattedTime); 
+  const EndTime = park?.parktiming?.endtime;
+  const formattEnddTime = EndTime ? EndTime.slice(11, 16) : ''; // Extracting time part (hh:mm)
+  console.log(formattedTime); 
   return (
     <>
     <div>
-      <div className='details-header'>
+    <nav class="navbar navbar-expand-lg ">
+  <div class="container">
+    <a class="navbar-brand fs-1 text bold nav-logo" href="#">Heaven<spam className='navlogo-span'>.com</spam></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
+      <ul class="navbar-nav  mb-2 mb-lg-0 gap-2 ">
+        <li class="nav-item">
+        <Button  onClick={() => navigate('/home')}>Home </Button>
+        </li>
+        
+        
+       
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+      {/* <div className='details-header'>
         <Container>
           <Row>
             <Col sm={12} md={12}>
@@ -49,7 +73,7 @@ function ParkView() {
             </Col>
           </Row>
         </Container>
-      </div>
+      </div> */}
 
 
       <Container>
@@ -109,9 +133,15 @@ function ParkView() {
                 <div className='city-icon'>
                   <i>
                     <IoLocationSharp />
-
                   </i>
                   <p className='m-0 p-0'>{park.city}, {park.country} </p>
+                </div>
+                
+                <div className='city-icon'>
+                  <i>
+                    <IoLocationSharp />
+                  </i>
+                  <p className='m-0 p-0'>Park Timing : {formattedTime} To {formattEnddTime} </p>
                 </div>
               </div>
               <div className='rating-items'>
@@ -155,11 +185,7 @@ function ParkView() {
                 Description :
               </h5>
               <p>
-                The First Collection at Jumeirah Village Circle is located in the district of JVC. The 41-story high-rise hotel features 491 fully equipped guestrooms. The hotel is within a 20-minute drive from
-                Downtown Dubai and Dubai South, home to the Expo 2020 site.
-                Guests staying at this hotel are eligible to access Soluna Restaurants and Beach Club at The Palm including transportation.
-                The hotel includes an exclusive club lounge, a large swimming pool and sundeck, a fully equipped gymnasium, as well as separate male and female spa rooms.
-                Specialty restaurants at the hotel include Santè Ria with its menu inspired by flavors of South America. The Village Bistro is a family-friendly venue with an à la Carte menu and buffet selection.
+               {park.description}
               </p>
             </div>
 

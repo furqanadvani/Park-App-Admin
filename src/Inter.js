@@ -5,7 +5,8 @@ import { logout } from './features/userSlice';
 
 
 export const interceptor = async () => {
-	axios.defaults.baseURL = 'http://192.168.1.105:5000/api/v1';
+	axios.defaults.baseURL = 'https://jolly-gold-cuttlefish.cyclic.app/api/v1';
+    /// 192.168.1.105 WKH
     console.log("mogo")
     axios.interceptors.request.use(
         function (config) {
