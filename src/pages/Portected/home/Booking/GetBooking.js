@@ -1,7 +1,7 @@
-import { Button, Space, Table, Tag } from 'antd'
+import {  Space, Table, Tag } from 'antd'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Container } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom'
 import './GetBooking.css'
 import qs from 'qs';
@@ -166,19 +166,22 @@ function GetAllBookings() {
   return (
     <>
 
-      <div className='Header-admin add-park-header-main'>
-        <Container>
-
-          <div className='hotels-header header-main-admin'>
-            <div className='hotel-header-logo Admin-logo'>
-              <h1>Heaven<span>.com</span></h1>
-            </div>
-            <div className='hotels-btn admin-add '>
-              <button onClick={() => navigate('/home')}>Home</button>
-            </div>
-          </div>
-        </Container>
-      </div>
+<nav class="navbar navbar-expand-lg ">
+  <div class="container">
+    <a class="navbar-brand fs-1 text bold nav-logo" href="#">Heaven<spam className='navlogo-span'>.com</spam></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
+      <ul class="navbar-nav  mb-2 mb-lg-0 gap-2 ">
+        <li class="nav-item">
+        <Button  onClick={() => navigate('/home')}>Home</Button>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
 
 
       <div className='booking-body section-padding'>

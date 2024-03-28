@@ -5,7 +5,7 @@ import { logout } from './features/userSlice';
 
 
 export const interceptor = async () => {
-	axios.defaults.baseURL = 'http://192.168.105.33:5000/api/v1';
+	axios.defaults.baseURL = 'http://192.168.1.105:5000/api/v1';
     console.log("mogo")
     axios.interceptors.request.use(
         function (config) {

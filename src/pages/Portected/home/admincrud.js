@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AdminHeader from './header'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { Pagination, Table } from 'antd';
 
@@ -9,7 +9,9 @@ function AdminCrud() {
     const [users, setUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 15; // Manzoor shumara ka muqarrar karen
-  
+    const navigate = useNavigate()
+
+
     const handlelogOut = () => {
       localStorage.clear();
       window.location.reload();
@@ -105,7 +107,26 @@ function AdminCrud() {
       : [];
   return (
         <>
-      <AdminHeader />
+       <nav class="navbar navbar-expand-lg ">
+  <div class="container">
+    <a class="navbar-brand fs-1 text bold nav-logo" href="#">Heaven<spam className='navlogo-span'>.com</spam></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
+      <ul class="navbar-nav  mb-2 mb-lg-0 gap-2 ">
+        <li class="nav-item">
+        <Button  onClick={() => navigate('/home')}>Home </Button>
+        </li>
+   
+        
+        
+       
+      </ul>
+      
+    </div>
+  </div>
+</nav>
       <div className='user-list section-padding'>
         <h1>Admin's List</h1>
         <div className='add-btn d-flex justify-content-start  align-items-center '>

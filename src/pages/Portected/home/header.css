@@ -1,33 +1,28 @@
-.Header-admin{
-    width: 100%;
+.navbar {
+    box-shadow: 0px 2px 5px -2px rgba(0,0,0,0.25) !important;
+    line-height: 50px !important;
+    /* padding-block: 30px; */
+}
+/* .navbar-main{
     display: flex;
-    padding-block: 20px;
-    box-shadow: 0px 2px 5px -2px rgba(0,0,0,0.25);
-}
-.Admin-logo > h1{
-    font-size: 35px;
-    font-weight: 600;
-}
-.Admin-logo > h1 > span{
-    color: rgb(11, 200, 200);
-}
-.header-main-admin {
-    display: flex;
+    align-items: center;
     justify-content: space-between;
+} */
+.nav-logo  {
+  font-size: 35px;
+  font-weight: 600;
 }
-.Admin-info{
-    font-size: 35px;
+.nav-logo > .navlogo-span{
     color: rgb(11, 200, 200);
-    font-weight: 600;
 }
-.admin-add{
+/* .Nav-links{
     display: flex;
+    flex-wrap: nowrap;
     gap: 10px;
-}
-.admin-add > button {
-    border : none;
-    padding: 10px 15px;
-    border-radius: 8px;
-    color: black;
-    background-color: rgb(11, 200, 200);
+} */
+.nav-item > Button{
+    background-color: rgb(11, 200, 200) !important;
+    border: none !important;
+    padding: 10px 20px !important;
+    font-weight: 500 !important;
 }

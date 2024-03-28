@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAllparkhResult, setAllParkResult } from '../../../features/allParkSlice';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import './Allpark.css'
 import { useNavigate } from 'react-router-dom';
 
@@ -71,19 +71,29 @@ function AllparkList() {
 
     return (
         <div>
-<div className='Header-admin add-park-header-main'>
-                <Container>
+              <nav class="navbar navbar-expand-lg ">
+  <div class="container">
+    <a class="navbar-brand fs-1 text bold nav-logo" href="#">Heaven<spam className='navlogo-span'>.com</spam></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
+      <ul class="navbar-nav  mb-2 mb-lg-0 gap-2 ">
+        <li class="nav-item">
+        <Button onClick={() => navigate('/AddparkForm')}>Add Park</Button>
+        </li>
+        <li class="nav-item">
+        <Button onClick={() => navigate('/home')}>Home</Button>
+        </li>
+       
+        
+       
+      </ul>
+      
+    </div>
+  </div>
+</nav>
 
-                    <div className='hotels-header header-main-admin'>
-                        <div className='hotel-header-logo Admin-logo'>
-                            <h1>Heaven<span>.com</span></h1>
-                        </div>
-                        <div className='hotels-btn admin-add '>
-                            <button onClick={() => navigate('/AddparkForm')}>App Park</button>
-                        </div>
-                    </div>
-                </Container>
-            </div>
 
             <div className='box-container section-padding'>
                 <Container>
