@@ -329,7 +329,7 @@ function AddParkPage() {
                                                         <TimePicker
                                                             className="form-control"
                                                             name="endtime"
-                                                            allowClear={falsegit}
+                                                            allowClear={false}
                                                             value={values.endtime ? dayjs(values.endtime) : null}
                                                             onChange={(val) => {
                                                                 const formattedUTC = dayjs(`1970-01-01T${dayjs(val).toISOString().split('T')[1]}`).toISOString();
