@@ -171,9 +171,9 @@ function ParkView() {
 
   <div className='bok-btn'>
 
-  <button onClick={handleBooking}>
+  {/* <button onClick={handleBooking}>
     book park
-  </button>
+  </button> */}
   </div>
 
 </div>
