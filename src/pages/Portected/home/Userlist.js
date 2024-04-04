@@ -4,6 +4,7 @@ import './Userlist.css';
 import { Table, Pagination, Button } from 'antd'; // Ant Design se Button import karen
 import AdminHeader from './header';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function AdminPanel() {
   const [users, setUsers] = useState([]);
@@ -45,14 +46,17 @@ function AdminPanel() {
       const iduser ={ "userId" : userId }
 
       const response = await axios.put(`/deleteuser`, iduser,     config);
+      
   
   
       console.log('User deleted successfully:', response.data);
+      toast(response?.data?.message)
       fetchData()
       // console.log('User deleted successfully:', userId);
     } catch (error) {
-      alert("You do not have permission to access this resource")
+      // alert("You do not have permission to access this resource")
       console.error('Error during delete:', error.message);
+      toast(error?.response?.data?.message)
     }
   };
 

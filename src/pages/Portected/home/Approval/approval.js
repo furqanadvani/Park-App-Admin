@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Button, Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 
@@ -83,7 +84,7 @@ function AllApproval() {
             key: 'action',
             render: (text, record) => (
                 <span>
-                    {record.status !== 'rejected' && record.status !== 'approved' && (
+                    {record.status !== 'rejected' && record.status !== 'approved' && record.status !== 'canceled' && (
                         <Popconfirm
                             title="Accept the booking"
                             description="Are you sure to Accept this booking?"
@@ -95,7 +96,7 @@ function AllApproval() {
                             <Button className='btn btn-sm btn-success'>Accept</Button>
                         </Popconfirm>
                     )}
-                    {record.status !== 'rejected' && record.status !== 'approved' && (
+                    {record.status !== 'rejected' && record.status !== 'approved' && record.status !== 'canceled' && (
                         <Popconfirm
                             title="Delete the task"
                             description="Are you sure to delete this task?"
@@ -173,6 +174,8 @@ function AllApproval() {
                     'Authorization': `Bearer ${localStorage.getItem('user-token')}`
                 }
             })
+
+            toast(respone?.data?.message)
             getAllBooking();
         } catch (error) {
             console.log(error)

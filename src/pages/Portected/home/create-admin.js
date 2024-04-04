@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { Form, Formik, useFormik } from 'formik'
 import { CreateAdminSchema } from '../../../Schema'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 
 
@@ -52,10 +53,9 @@ function CreateAdminForm() {
             })
             const apiRes = respones.data;
             console.warn(apiRes, "apiRes")
-            const token = apiRes.data.token;
-            localStorage.setItem("user-token", token)
-            alert("Admin Created Successfully")
-            navigate('/adminlist')
+            toast(apiRes?.message)
+            navigate('/admincrud')
+          
         } catch (error) {
             // alert("You do not have permission to access this resource")
             console.error('Error during signup:', error);

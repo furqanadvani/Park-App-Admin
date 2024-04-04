@@ -27,15 +27,19 @@ export const interceptor = async () => {
     axios.interceptors.response.use(
         function (response) {
             (async () => {
-                if(response?.data?.error && response?.data?.data?.message === 'Session expired.') {
-                    store.dispatch(logout(true, 'expire', response?.data?.data?.message))
-                }
+                // if(response?.data?.error && response?.data?.data?.message === 'Session expired.') {
+                //     store.dispatch(logout(true, 'expire', response?.data?.data?.message))
+                // }
 
             })();
 
             return response;
         },
         async function (error) {
+            if (error.respones?.data.isExpired){
+                await localStorage.removeItem('user-token')
+                store.dispatch(logout(error.response?.data?.message))
+            }
             console.log('error', error);
             return Promise.reject(error?.message ? error : error.response);
         }

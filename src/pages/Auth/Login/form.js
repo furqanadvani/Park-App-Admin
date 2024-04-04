@@ -7,6 +7,7 @@ import axios from 'axios';
 import { LoginSchema } from '../../../Schema';
 import { useDispatch } from 'react-redux';
 import { login } from '../../../features/userSlice';
+import { toast } from 'react-toastify';
 
 function LoginForm() {
 
@@ -46,6 +47,8 @@ function LoginForm() {
             if (response.status === 200) {
                 const responseData = response.data;
                 const userToken = responseData.data.token;
+                toast(responseData?.message)
+                console.log(responseData);
                 localStorage.setItem('user-token', userToken);
                 // console.log(userToken)
                 dispatch(login(responseData.data))

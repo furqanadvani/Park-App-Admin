@@ -145,6 +145,7 @@ function AddParkPage() {
         try {
 
             const response = await axios.post('/addpark', formData);
+            // console.log(response)
 
             if (response.status === 200) {
                 navigate('/Addpark')

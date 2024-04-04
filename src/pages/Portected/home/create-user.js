@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom'
 import { Form, Formik, useFormik } from 'formik'
 import { createUserSchema } from '../../../Schema'
 import axios from 'axios'
+import { toast } from 'react-toastify'
+import { logout } from '../../../features/userSlice'
+import { useDispatch } from 'react-redux'
 
 
 
@@ -41,6 +44,8 @@ function CreateUser() {
 
 
 
+    const dispatch = useDispatch()
+
     async function CreateUser(values) {
 
         try {
@@ -51,13 +56,20 @@ function CreateUser() {
                     "Accept": "application/json"
                 },
             })
-            const apiRes = respones.data;
-            console.warn(apiRes, "apiRes")
-            const token = apiRes.data.token;
-            localStorage.setItem("user-token", token)
-            navigate('/userlist')
+            if (respones.status === 200) {
+                const apiRes = respones.data;
+                console.warn(apiRes, "apiRes")
+                const token = apiRes?.data?.token;
+                localStorage.setItem("user-token", token)
+                toast(apiRes?.message)
+                navigate('/userlist')
+              } else {
+                dispatch(logout());
+                navigate('/login')
+              }
+         
         } catch (error) {
-            alert("You do not have permission to access this resource")
+            toast.error(error?.respones?.data?.messages)
             console.error('Error during signup:', error);
         }
     }

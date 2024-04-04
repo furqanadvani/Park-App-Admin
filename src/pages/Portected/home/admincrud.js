@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { Pagination, Table } from 'antd';
+import { toast } from 'react-toastify';
 
 function AdminCrud() {
     const [users, setUsers] = useState([]);
@@ -47,13 +48,16 @@ function AdminCrud() {
         const iduser ={ "adminId" : adminId }
   
         const response = await axios.put(`/deleteadmin`, iduser,  config);
-    
-    
+        
         console.log('User deleted successfully:', response.data);
         // console.log('User deleted successfully:', userId);
+        toast(response?.data?.message)
+
+        fetchData()
       } catch (error) {
-        alert("You do not have permission to access this resource")
+        // alert("You do not have permission to access this resource")
         console.error('Error during delete:', error.message);
+        toast(error?.response?.data?.message)
       }
     };
   

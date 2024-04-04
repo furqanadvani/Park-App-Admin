@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login, logout, selectUser } from './features/userSlice';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+
 // import { useNavigate } from 'react-router-dom';
 
 function App() {
@@ -35,12 +37,7 @@ function App() {
           'Authorization': `Bearer ${localStorage.getItem('user-token')}`
         }
       });
-
-
-     
-
       console.log(response);
-
       if (response.status === 200) {
         const userDataApi = response.data;
         console.log(userDataApi);
@@ -49,6 +46,7 @@ function App() {
         dispatch(login(userDataApi));
       } else {
         dispatch(logout());
+        navigate('/login')
       }
     } catch (error) {
       console.error('User profile fetch mein error:', error);
